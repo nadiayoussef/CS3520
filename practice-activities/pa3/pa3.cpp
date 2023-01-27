@@ -1,3 +1,6 @@
+// Practice Activity 3
+// Nadia Youssef and Varshini Sundaresan
+
 #include <iostream>
 using namespace std;
 

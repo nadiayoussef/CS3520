@@ -1,4 +1,4 @@
-// Program to read 3-dimensional matrix and display the elements as 1x3N matrix
+// Program to read 3-dimensional matrix and display the elements as 1xN^3 matrix
 // TODO
 // initize matrix using update_3d method (see comments below)
 // display method must not be able to modify array elements (update the code as needed)
@@ -13,7 +13,7 @@ void update_3d(double Matrix_3d[][SIZE][SIZE],int size);
 void display_1d(double Matrix_3d[][SIZE][SIZE],int size); 
 
 int main(void) {
-	//prompt the use to enter appropriate dimensions and initializ the matrix accordingly
+	//prompt the user to initialize the matrix accordingly
 	double Matrix_3d[SIZE][SIZE][SIZE] = {};
 	//initialize the array to non-zero values (use scanf or random numbers generator)
 	update_3d(Matrix_3d, SIZE);

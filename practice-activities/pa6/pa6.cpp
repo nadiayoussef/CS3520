@@ -1,6 +1,7 @@
 // Nadia Youssef, Varshini Sundaresan, Emma Karedenes
 
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 /*

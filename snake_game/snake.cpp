@@ -66,28 +66,77 @@ Snake *move_snake(Snake *snake, int direction)
   // TODO
   Snake *new_head = new Snake;
 
+  // maybe add while(snake) like in other functions below?
+
+
   // Set the new head to have the x and y coordinates as the existing head of the snake
+  new_head->x = snake->x;
+  new_head->y = snake->y;
 
   switch (direction)
   {
   case UP:
     // Write code to make the new head go up by 1 cell
+    if(snake->y + 1 != (snake->next)->y) {
+      //new_head->y += direction;
+      new_head->y = new_head->y + 1;
+    }
     break;
   case DOWN:
     // Write code to make the new head go down by 1 cell
+    if(snake->y - 1 != (snake->next)->y) {
+      // new_head->y =- direction;
+      new_head->y = new_head->y - 1;
+    }
     break;
   case RIGHT:
     // Write code to make the new head go right by 1 cell
+    if(snake->x + 1 != (snake->next)->x) {
+      // new_head->x =+ direction;
+      new_head->x = new_head->x + 1;
+    }
     break;
   case LEFT:
     // Write code to make the new head go left by 1 cell
-    break;
+    if(snake->x - 1 != (snake->next)->x) {
+      // new_head->x =- direction;
+      new_head->x = new_head->x - 1;
+    }
+  break;
+
+  // case NOCHAR:
+  //   // checks if moving down
+  //   if(snake->y + 1 != (snake->next)->y) {
+  //           new_head->y = new_head->y - 1;
+  //   }
+  //   // checks if moving up
+  //   if(snake->y - 1 != (snake->next)->y) {
+  //     new_head->y = new_head->y + 1;
+  //   }
+  //   // checks if moving left
+  //   if(snake->x + 1 != (snake->next)->x) {
+  //     new_head->x = new_head->x - 1;
+  //   }
+  //   // checks if moving right
+  //   if(snake->x - 1 != (snake->next)->x) {
+  //     new_head->x = new_head->x + 1;
+  //     }
+  //   break;
   }
+   
+ 
 
   // Set new head as the new head of the entire snake
   // Add all the features (color and symbol) to the new cell
-  //  Delete the tail from the snake: HINT - there is a remove tail function below
-
+  // Delete the tail from the snake: HINT - there is a remove tail function below
+  new_head->next = snake;
+  new_head->speed = snake->speed;
+  new_head->color[0] = snake->color[0];
+  new_head->color[1] = snake->color[1];
+  new_head->color[2] = snake->color[2];
+  new_head->symbol = snake->symbol;
+  remove_tail(new_head);
+ 
   return new_head;
 }
 
@@ -115,4 +164,13 @@ void draw_snake(Snake *snake)
 bool eat_itself(Snake *snake)
 {
   // TODO for Milestone 2 only
+}
+
+// Returns the length of a given snake
+int len(Snake* snake) {
+  int count = 0;
+  while(snake) {
+    count++;
+  }
+  return count;
 }

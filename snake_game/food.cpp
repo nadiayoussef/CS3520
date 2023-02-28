@@ -70,16 +70,53 @@ void add_new_food(Food* foods, Food* new_food){
     temp->next = new_food;
 }
 
+enum Type food_type(Food* foods, int x, int y) {
+    //Implement the code to return the type of the food
+    //present at position (x, y)
+    Food* temp = foods;
 
-enum Type food_type(Food* foods, int x, int y){
-    //Implement the code to return the type of the food 
-    //present at position (x, y)	
-	
+    while(temp != NULL) {
+        if(temp->x == x && temp->y == y) {
+
+            if(temp->type == 'O') {
+                return Increase;
+            }
+            else if(temp->type == 'X') {
+                return Decrease;
+            }
+        }
+        temp = temp->next;
+    }
+
+    return Increase;
+
 }
-Food* remove_eaten_food(Food* foods, int x, int y){
-	//Implement the code to remove food at position (x,y).
-	//Create a new linked list of type Food containing only the
-	//needed food and return this new list
+// foods: f1 f2 f3 f4 f5 f6 NULL
+// temp: f1 f2 f3 f4 f5 f6 NULL
+// remove f3
+// new_foods: f1 f2 f4 f5 f6 NULL
+
+Food* remove_eaten_food(Food* foods, int x, int y) {
+    //Implement the code to remove food at position (x,y).
+    //Create a new linked list of type Food containing only the
+    //needed food and return this new list
+    Food* curr = foods;
+    Food* prev = NULL;
+
+    while(curr != NULL) {
+        if(curr->x == x && curr->y == y) {
+            if(!prev) {
+                foods = curr->next;
+            }
+            else {
+                prev->next = curr->next;
+            }
+        free(curr);
+        }
+    prev = curr;
+    curr = curr->next;
+    }
+    return foods;
 }
 // Display all the food
 void draw_food (Food *foods)

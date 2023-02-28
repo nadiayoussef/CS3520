@@ -41,7 +41,7 @@ struct Food {
   struct Food* next;
 };
 
-typedef struct Food Food; 
+typedef struct Food Food;
 
 //Function prototypes 
 void add_new_food(Food* foods, Food* new_food);

@@ -34,6 +34,8 @@
 #include "key.hpp"
 #include <ncurses.h>
 
+#define SNAKE_PAIR 1
+
 // Initialize snake
 Snake *init_snake(int x, int y)
 {
@@ -155,9 +157,15 @@ void draw_snake(Snake *snake)
 {
   while (snake)
   {
+    start_color();
+    init_color(COLOR_GREEN, snake->color[0], snake->color[1], snake->color[2]);
+    init_pair(SNAKE_PAIR, COLOR_GREEN, COLOR_BLACK);
+    attron(COLOR_PAIR(SNAKE_PAIR));
     mvprintw(snake->y, snake->x, "%c", snake->symbol);
     snake = snake->next;
+    attroff(COLOR_PAIR(SNAKE_PAIR));
   }
+ 
 }
 
 // checks if it eats itself, if it does, then return true

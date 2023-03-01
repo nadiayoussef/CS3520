@@ -50,6 +50,7 @@ gamewindow_t *init_GameWindow(int, int, int, int);
 gamewindow_t *changeGameWindow(int upper_left_x, int upper_left_y, int width, int height, gamewindow_t *);
 void draw_Welcomewindow(gamewindow_t *w);
 void draw_Pausewindow(gamewindow_t *w);
+void draw_Endwindow(gamewindow_t *w);
 
 
 void undraw_Gamewindow(gamewindow_t *);

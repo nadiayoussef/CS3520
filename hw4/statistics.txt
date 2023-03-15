@@ -1,0 +1,14 @@
+small.txt has 67 number of words
+
+small.txt has 9 words that start with a vowel
+england; {Word Length: 8}: 1
+in {Word Length: 2}: 2
+a {Word Length: 1}: 8
+and {Word Length: 3}: 3
+ever. {Word Length: 5}: 1
+in {Word Length: 2}: 2
+it {Word Length: 2}: 1
+of {Word Length: 2}: 4
+on {Word Length: 2}: 2
+
+small.txt has 7 distinct words with length 2 or less

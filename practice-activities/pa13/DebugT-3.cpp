@@ -86,7 +86,7 @@ public:
 };
 
 
-void Customer::setCustomer(string customer_name, double pr) // decapitalize CustomerName since it is a variable and not a class (not ness)
+void Customer::setCustomer(string customer_name, double pr) // decapitalize CustomerName since it is a variable and not a class
 {
    name = customer_name;
    balDue = pr;

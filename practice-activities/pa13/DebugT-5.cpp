@@ -90,7 +90,8 @@ public:
         cout << "Name: " << this->getName() << " model Year: " << this->getMY() << " Miles driven: " << miles << endl;
     }
 
-    virtual const Suv &operator=(const Car c)
+    // missing & to denote the c object as a reference variable
+    virtual const Suv &operator=(const Car &c)
     {
         if (const Suv *b = dynamic_cast<const Suv *>(&c))
         {

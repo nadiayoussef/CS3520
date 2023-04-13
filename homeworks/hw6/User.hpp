@@ -32,7 +32,7 @@ class Customer : public User {
         Billing payment_info;
     
     public:
-        Customer(Order cart, string username, string password, vector<Order> order_history, vector<Products> favorites, Billing payment_info;);
+        Customer(Order cart, string username, string password, vector<Order> order_history, vector<Products> favorites, Billing payment_info);
 
         Order get_cart();
         string get_username();

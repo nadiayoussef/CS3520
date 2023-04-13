@@ -34,12 +34,12 @@ private:
   double price;
 
 public:
-  Product(int product_id, string name, string description, double price;);
+  Product(int product_id, string name, string description, double price);
 
   int get_prod_id();
   string get_prod_name();
   string get_prod_desc();
-  float get_prod_price();
+  double get_prod_price();
 
   void set_prod_id(int id);
   void set_prod_name(string name);
@@ -69,7 +69,7 @@ private:
   string order_date;
 
 public:
-  Order(int order_id, vector<Product> order_products, double total_price, string order_date;);
+  Order(int order_id, vector<Product> order_products, double total_price, string order_date);
 
   int get_order_id();
   vector<Product> get_order();

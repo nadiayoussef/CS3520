@@ -29,21 +29,25 @@ class Customer : public User {
         string password;
         vector<Order> order_history;
         vector<Products> favorites;
+        Billing payment_info;
     
     public:
-        UserAccount();
+        Customer(Order cart, string username, string password, vector<Order> order_history, vector<Products> favorites, Billing payment_info;);
 
         Order get_cart();
         string get_username();
         string get_password();
         vector<Order> get_history();
         vector<Products> get_favorites();
+        Billing get_payment_info();
 
         void set_cart(Order o);
         void set_username(string username);
         void set_password(string pass);
         void set_history(vector<Order> orders);
         void set_favorites(vector<Products> favs);
+        void set_payment_info(Billing payment_info);
+
 };
 
 
@@ -63,4 +67,30 @@ class Server : public User {
         void set_contact(int phone);
         void set_delivery(Order deliv);
         void set_mode(string mode);
+};
+
+
+class Billing {
+    private:
+        string card_type;
+        string name_on_card;
+        int card_num;
+        int exp_date;
+        int cvv;
+
+    public:
+        Billing(string card_type, string name_on_card, int card_num, int exp_date, int cvv);
+
+        string get_card_type();
+        string get_card_name();
+        int get_card_num();
+        int get_exp_date();
+        int get_cvv();
+
+        void set_card_type(string type);
+        void set_card_name(string name);
+        void set_card_num(int num);
+        void set_exp_date(int date);
+        void set_cvv(int cvv);
+  
 };

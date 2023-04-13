@@ -1,90 +1,83 @@
+#include <iostream>
 #include <vector>
-using std::vector;
+using namespace std;
 
 class Restaurant {
 private:
   string name;
-  string area;
-  int rest_id;
+  string address;
+  int contact;
+  Menu menu;
 
 protected:
 public:
-  Restaurant();
-  string getName();
-  string getArea();
-  string getContact();
-  int getRest_id();
-  void setName(string name);
-  void setArea(string location);
-  void setRest_id(int rest_id);
+  Restaurant(string name, string address, int contact, Menu menu);
+
+  string get_res_name();
+  string get_res_address();
+  string get_res_contact();
+  Menu get_menu();
+
+
+  void set_res_name(string name);
+  void set_res_address(string address);
+  void set_res_contact(int contact);
+  void set_menu(Menu menu);
+
 };
 
-class Items : public Restaurant {
+class Product {
 private:
-  int item_id;
-  string item_name;
-  string item_description;
-  float item_price;
-
-protected:
-public:
-  Rest_Items();
-  int getItemId();
-  string getItemName();
-  string getItemDescription();
-  float getItemPrice();
-  void setItemId(int item_id);
-  void setItemName(string item_name);
-  void setItemDescription(string item_description);
-  void setItemPrice(float item_price);
-};
-
-class Menu : public Restaurant {
-private:
-  vector<Rest_Items> menu_item;
+  int product_id;
+  string name;
+  string description;
+  double price;
 
 public:
-  Menu();
-  void addMenuItem(item : Items);
-  void removeMenuItem(item : Items);
-  void setMenuItem(vector<Rest_Items> menu_item);
-  vector<Items> getMenuItem();
+  Product(int product_id, string name, string description, double price;);
+
+  int get_prod_id();
+  string get_prod_name();
+  string get_prod_desc();
+  float get_prod_price();
+
+  void set_prod_id(int id);
+  void set_prod_name(string name);
+  void set_prod_desc(string desc);
+  void set_prod_price(double price);
 };
 
-class Order : public Restaurant {
+class Menu {
+private:
+  vector<Product> menu_options;
+
+public:
+  Menu(vector<Product> menu_options);
+  
+  vector<Product> get_menu();
+  void set_menu(vector<Product> products);
+
+  void add_product(Product p);
+  void remove_product(Product p);
+};
+
+class Order {
 private:
   int order_id;
-  vector<Items> order_items;
-  float order_total;
+  vector<Product> order_products;
+  double total_price;
   string order_date;
 
 public:
-  Order();
-  int getOrderId();
-  vector<Rest_Items> getOrderItems();
-  float getOrderTotal();
+  Order(int order_id, vector<Product> order_products, double total_price, string order_date;);
+
+  int get_order_id();
+  vector<Product> get_order();
+  double getOrderTotal();
   string getOrderDate();
-  void setOrderId(int order_id);
-  void setOrderItems(vector<Rest_Items> order_items);
-  void setOrderTotal(float order_total);
-  void setOrderDate(string order_date);
-};
 
-class Server : public Restaurant {
-private:
-  string server_name;
-  int server_id;
-  int server_phone;
-  vector<Rest_Items> server_order;
-
-public:
-  Server();
-  string getServerName();
-  int getServerId();
-  int getServerPhone();
-  string getServerOrder();
-  void setServerName(string delivery_name);
-  void setServerId(int delivery_id);
-  void setServerPhone(int delivery_phone);
-  void setServerOrder(string delivery_destination);
+  void set_order_id(int id);
+  void set_order_products(vector<Product> prods);
+  void set_order_total(double toal);
+  void set_order_date(string date);
 };

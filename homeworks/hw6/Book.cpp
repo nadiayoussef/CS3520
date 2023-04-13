@@ -46,3 +46,28 @@ ostream &operator<<(ostream &out, const Book &book) {
   out << book.title;
   return out;
 }
+
+
+bool Book::operator==(const Book &book) {
+  if(
+    this->title == book.title &&
+    this->id == book.id &&
+    this->author == book.author &&
+    this->pub_year == book.pub_year)
+  {return true;}
+  else {   
+   return false;
+ }
+}
+
+ bool Book::operator!=(const Book &book) {
+  if(
+    this->title != book.title ||
+    this->id != book.id ||
+    this->author != book.author ||
+    this->pub_year != book.pub_year)
+  {return true;}
+  else {   
+   return false;
+ }
+}

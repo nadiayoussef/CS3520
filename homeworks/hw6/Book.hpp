@@ -23,5 +23,8 @@ class Book {
     void set_id(int i);
     void set_author(string a);
     void set_year(int y);
+
+    bool operator==(const Book &);   
+    bool operator!=(const Book &); 
     
 };

@@ -58,3 +58,15 @@ bool Course::operator==(const Course &course) {
    return false;
  }
 };
+
+ bool Course::operator!=(const Course &course) {
+  if(
+    this->name != course.name ||
+    this->crn != course.crn ||
+    this->prof != course.prof ||
+    this->capacity != course.capacity)
+  {return true;}
+  else {   
+   return false;
+ }
+};

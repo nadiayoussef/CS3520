@@ -24,4 +24,6 @@ class Course {
     void set_prof(string p);
     void set_capacity(int cap);
     bool operator==(const Course &);   
+    bool operator!=(const Course &);   
+
 };

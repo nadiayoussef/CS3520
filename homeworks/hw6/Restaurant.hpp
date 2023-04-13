@@ -73,8 +73,8 @@ public:
 
   int get_order_id();
   vector<Product> get_order();
-  double getOrderTotal();
-  string getOrderDate();
+  double get_order_total();
+  string get_order_date();
 
   void set_order_id(int id);
   void set_order_products(vector<Product> prods);

@@ -31,6 +31,13 @@
 #include <cstdlib>
 #include "key.hpp"
 
+// // Defines the arrow keys to their ascii char value
+// #define KEY_UP 72
+// #define KEY_DOWN 80
+// #define KEY_LEFT 75
+// #define KEY_RIGHT 77
+
+
 int get_char()
 {
   int ch = getch();

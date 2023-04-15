@@ -47,4 +47,5 @@ Snake* move_snake(Snake* snake, int direction);
 void draw_snake(Snake* snake);
 bool eat_itself(Snake* snake);
 Snake* remove_tail(Snake* snake);
+Snake* add_tail(Snake* snake);
 int len(Snake* snake);

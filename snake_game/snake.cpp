@@ -52,7 +52,7 @@ Snake *create_tail(int x, int y)
   snake->color[0] = 0;
   snake->color[1] = 0;
   snake->color[2] = 255;
-  /* snake->color = {0, 0, 255}; */
+  //snake->color = {32, 178, 170}; 
   snake->symbol = '#';
   snake->next = NULL;
   snake->x = x;
@@ -67,27 +67,76 @@ Snake *move_snake(Snake *snake, int direction)
   Snake *new_head = new Snake;
 
   // Set the new head to have the x and y coordinates as the existing head of the snake
+  new_head->x = snake->x;
+  new_head->y = snake->y;
 
   switch (direction)
   {
   case UP:
     // Write code to make the new head go up by 1 cell
+    if(snake->y + 1 != (snake->next)->y) { // not moving down
+      new_head->y = new_head->y + 1;
+    }
     break;
   case DOWN:
     // Write code to make the new head go down by 1 cell
+    if(snake->y - 1 != (snake->next)->y) {
+      new_head->y = new_head->y - 1;
+    }
     break;
   case RIGHT:
     // Write code to make the new head go right by 1 cell
+    if(snake->x + 1 != (snake->next)->x) {
+      new_head->x = new_head->x + 1;
+    }
     break;
   case LEFT:
     // Write code to make the new head go left by 1 cell
+    if(snake->x - 1 != (snake->next)->x) {
+      new_head->x = new_head->x - 1;
+    }
+  break;
+
+  case NOCHAR:
+    // checks if moving up
+    if(snake->y + 1 == (snake->next)->y) {
+      new_head->y = new_head->y - 1;
+    }
+    // checks if moving down
+    if(snake->y - 1 == (snake->next)->y) {
+      new_head->y = new_head->y + 1;
+    }
+    // checks if moving left
+    if(snake->x + 1 == (snake->next)->x) {
+      new_head->x = new_head->x - 1;
+    }
+    // checks if moving right
+    if(snake->x - 1 == (snake->next)->x) {
+      new_head->x = new_head->x + 1;
+    }
     break;
+
+    new_head->next = snake;
+    new_head->color[3] = snake->color[3];
+    new_head->symbol = snake->symbol;
+    new_head = remove_tail(new_head);
+    return new_head;
+
   }
+   
+ 
 
   // Set new head as the new head of the entire snake
   // Add all the features (color and symbol) to the new cell
-  //  Delete the tail from the snake: HINT - there is a remove tail function below
-
+  // Delete the tail from the snake: HINT - there is a remove tail function below
+  new_head->next = snake;
+  new_head->speed = snake->speed;
+  new_head->color[0] = snake->color[0];
+  new_head->color[1] = snake->color[1];
+  new_head->color[2] = snake->color[2];
+  new_head->symbol = snake->symbol;
+  remove_tail(new_head);
+ 
   return new_head;
 }
 
@@ -101,18 +150,47 @@ Snake *remove_tail(Snake *snake)
   return snake;
 }
 
+Snake *add_tail(Snake *snake)
+{
+  Snake *end = snake;
+  while (end->next)
+    end = end->next;
+  end->next = create_tail(end->x, end->y);
+  return snake;
+}
+
 // draws the snake on the board
 void draw_snake(Snake *snake)
 {
+  start_color();
+  init_pair(1, COLOR_GREEN, COLOR_BLACK);
+  attron(COLOR_PAIR(1));
+
   while (snake)
   {
     mvprintw(snake->y, snake->x, "%c", snake->symbol);
     snake = snake->next;
   }
+    attroff(COLOR_PAIR(1));
+
 }
 
 // checks if it eats itself, if it does, then return true
 bool eat_itself(Snake *snake)
 {
-  // TODO for Milestone 2 only
+
+    while(snake != NULL) {
+        if(mvgetch(snake->y, snake->x) == '#') {
+          return true;
+        }
+    }
+}
+
+// Returns the length of a given snake
+int len(Snake* snake) {
+  int count = 0;
+  while(snake) {
+    count++;
+  }
+  return count;
 }
